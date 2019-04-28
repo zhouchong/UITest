@@ -22,4 +22,26 @@
         android:background="@drawable/rounded_rectangle"
         android:text="圆角边框的TextView" />
 
+    <!--textColor: 输入数据的颜色-->
+
+    <EditText
+        android:layout_marginTop="10dp"
+        android:background="@drawable/rounded_rectangle"
+        android:id="@+id/editTxt"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:hint="This is my cool hint"
+        android:singleLine="true"
+        android:textColor = "#ff8c00"
+        android:inputType="textCapCharacters|textNoSuggestions" />
+
+    <Button
+        android:id="@+id/btnOne"
+        android:layout_marginTop="10dp"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/white"
+        android:background="@drawable/selector"
+        android:text="按钮"/>
+
 </LinearLayout>

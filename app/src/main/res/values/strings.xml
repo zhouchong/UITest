@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">UITest Tony</string>
+    <drawable name="clr_normal">#ff6501</drawable>
+    <drawable name="clr_pressed">#4CAF50</drawable>
 </resources>
