@@ -8,7 +8,9 @@
     android:gravity="center|top"
     tools:context=".MainActivity">
 
-    <!-- Tony: gravity: 设置的是内容的位置 -->
+    <!-- Tony:
+    gravity       : 属性是用来设置控件中的内容的位置，
+    layout_gravity: 属性是用来设置当前子控件在父控件中的位置。 -->
 
     <TextView
         android:id="@+id/txt"
@@ -35,13 +37,39 @@
         android:textColor = "#ff8c00"
         android:inputType="textCapCharacters|textNoSuggestions" />
 
-    <Button
-        android:id="@+id/btnOne"
-        android:layout_marginTop="10dp"
-        android:layout_width="100dp"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="@android:color/white"
-        android:background="@drawable/selector"
-        android:text="按钮"/>
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btnOne"
+            android:layout_marginTop="5dp"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:gravity="left|center"
+            android:textColor="@android:color/white"
+            android:background="@drawable/selector"
+            android:text="按钮1"/>
+
+        <!-- LinearLayout左右靠比较麻烦, left/right不起作用.
+        方法: 中间加一个透明占位, weight=1 -->
+
+        <TextView
+            android:alpha="0"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <Button
+            android:id="@+id/btnTwo"
+            android:layout_marginTop="5dp"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/white"
+            android:background="@drawable/selector1"
+            android:text="按钮2"/>
+
+    </LinearLayout>
 
 </LinearLayout>

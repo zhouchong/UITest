@@ -4,15 +4,15 @@
     <!-- Tony: 圆角矩形 -->
 
     <!-- 设置透明背景色 -->
-    <solid android:color="#87CEEB" />
+    <solid android:color="#5DAF4C" />
 
     <!-- 设置一个黑色边框 -->
-    <stroke
-        android:width="2px"
-        android:color="#000000" />
+    <!--<stroke-->
+        <!--android:width="2px"-->
+        <!--android:color="#000000" />-->
     <!-- 设置四个圆角的半径 -->
     <corners
-      android:radius="20dp" />
+        android:radius="10dp" />
     <!-- 设置一下边距,让空间大一点 -->
     <padding
         android:bottom="5dp"
