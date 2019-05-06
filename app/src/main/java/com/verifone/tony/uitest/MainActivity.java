@@ -1,8 +1,11 @@
 package com.verifone.tony.uitest;
 
+import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -65,6 +68,14 @@ public class MainActivity extends AppCompatActivity {
         ListView listView = findViewById(R.id.list_view);
         listView.setAdapter(adapter);
 
+        //点击事件
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Fruit fruit = fruitList.get(i);
+                Toast.makeText(getApplicationContext(), fruit.getName(), Toast.LENGTH_SHORT).show();
+            }
+        });
 
         /*---------------- ButtonView ------------------------------------------------*/
 
