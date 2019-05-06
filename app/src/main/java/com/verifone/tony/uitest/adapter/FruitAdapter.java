@@ -28,7 +28,7 @@ public class FruitAdapter extends ArrayAdapter<Fruit> {
         resourceId = resource;
     }
 
-    @NonNull
+/*    @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         Fruit fruit = getItem(position);
@@ -38,5 +38,36 @@ public class FruitAdapter extends ArrayAdapter<Fruit> {
         fruitImage.setImageResource(fruit.getImageId());
         fruitName.setText(fruit.getName());
         return view;
+    }*/
+
+    /**
+     * 上面的是最原始办法, 下面对效率优化
+     */
+    @NonNull
+    @Override
+    public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+        Fruit fruit = getItem(position);
+        View view;
+        ViewHolder viewHolder;
+        if (convertView == null) {
+            view = LayoutInflater.from(getContext()).inflate(resourceId, parent, false);
+            viewHolder = new ViewHolder();
+            viewHolder.fruitImage = view.findViewById(R.id.fruit_image);
+            viewHolder.fruitName  = view.findViewById(R.id.fruit_name);
+            view.setTag(viewHolder); //将viewHolder存储到View中
+        } else {
+            view = convertView;
+            viewHolder = (ViewHolder) view.getTag();
+        }
+
+        viewHolder.fruitImage.setImageResource(fruit.getImageId());
+        viewHolder.fruitName.setText(fruit.getName());
+
+        return view;
+    }
+
+    class ViewHolder {
+        ImageView fruitImage;
+        TextView  fruitName;
     }
 }
