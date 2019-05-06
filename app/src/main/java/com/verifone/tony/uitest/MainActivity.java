@@ -3,17 +3,23 @@ package com.verifone.tony.uitest;
 import android.graphics.drawable.Drawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.verifone.tony.uitest.adapter.FruitAdapter;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class MainActivity extends AppCompatActivity {
-
     @BindView(R.id.txt)
     public TextView textView;
 
@@ -31,6 +37,8 @@ public class MainActivity extends AppCompatActivity {
         Toast.makeText(getApplicationContext(), getEditText, Toast.LENGTH_SHORT).show();
     }
 
+    private List<Fruit> fruitList = new ArrayList<>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,7 +54,16 @@ public class MainActivity extends AppCompatActivity {
         textView.setCompoundDrawables(drawable[0], drawable[1], drawable[2],
                 drawable[3]);
 
-        /*---------------- EditView ------------------------------------------------*/
+        /*---------------- ListView ------------------------------------------------*/
+        /* From 第一行代码 */
+//        String[] data = {"Apple", "Mango", "Banana"};
+//        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, data);
+//        ListView listView = (ListView) findViewById(R.id.list_view);
+//        listView.setAdapter(arrayAdapter);
+        initFruits();
+        FruitAdapter adapter = new FruitAdapter(this, R.layout.fruit_item, fruitList);
+        ListView listView = findViewById(R.id.list_view);
+        listView.setAdapter(adapter);
 
 
         /*---------------- ButtonView ------------------------------------------------*/
@@ -56,5 +73,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    private void initFruits() {
+        Fruit apple = new Fruit("Apple", R.mipmap.apple);
+        Fruit mango = new Fruit("Mango", R.mipmap.mongo);
+        Fruit banana = new Fruit("Banana", R.mipmap.banana);
+
+        fruitList.add(apple);
+        fruitList.add(mango);
+        fruitList.add(banana);
+    }
 
 }
