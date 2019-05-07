@@ -1,6 +1,7 @@
 package com.verifone.tony.uitest;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -38,6 +39,12 @@ public class MainActivity extends AppCompatActivity {
     public void onBtnOneClicked() {
         String getEditText = editText.getText().toString();
         Toast.makeText(getApplicationContext(), getEditText, Toast.LENGTH_SHORT).show();
+    }
+
+    @OnClick(R.id.btnNext)
+    public void onBtnNextClicked() {
+        Intent intent = new Intent(MainActivity.this, Main2Activity.class);
+        startActivity(intent);
     }
 
     private List<Fruit> fruitList = new ArrayList<>();
