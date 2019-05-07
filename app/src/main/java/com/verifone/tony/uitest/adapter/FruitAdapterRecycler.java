@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.verifone.tony.uitest.Fruit;
 import com.verifone.tony.uitest.R;
@@ -22,11 +23,13 @@ public class FruitAdapterRecycler extends RecyclerView.Adapter<FruitAdapterRecyc
     private List<Fruit> fruitList;
 
     static class ViewHolder extends RecyclerView.ViewHolder {
+        View fruitView;
         ImageView fruitImage;
         TextView  fruitName;
 
         public ViewHolder(View view) {
             super(view);
+            fruitView = view;
             fruitImage = view.findViewById(R.id.fruit_image);
             fruitName  = view.findViewById(R.id.fruit_name);
         }
@@ -41,7 +44,15 @@ public class FruitAdapterRecycler extends RecyclerView.Adapter<FruitAdapterRecyc
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.fruit_item, parent, false);
-        ViewHolder holder = new ViewHolder(view);
+        final ViewHolder holder = new ViewHolder(view);
+        holder.fruitView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int position = holder.getAdapterPosition();
+                Fruit fruit = fruitList.get(position);
+                Toast.makeText(view.getContext(), "你点击了 " + fruit.getName(), Toast.LENGTH_SHORT).show();
+            }
+        });
         return holder;
     }
 
