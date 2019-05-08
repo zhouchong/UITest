@@ -2,6 +2,7 @@ package com.verifone.tony.uitest;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
@@ -20,7 +21,14 @@ public class Main2Activity extends AppCompatActivity {
 
         initFruits();
         RecyclerView recyclerView = findViewById(R.id.recycler_view);
-        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        //顺序
+/*        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(layoutManager);
+        FruitAdapterRecycler fruitAdapterRecycler = new FruitAdapterRecycler(fruitList);
+        recyclerView.setAdapter(fruitAdapterRecycler);*/
+
+        //网格
+        GridLayoutManager layoutManager = new GridLayoutManager(this, 3);
         recyclerView.setLayoutManager(layoutManager);
         FruitAdapterRecycler fruitAdapterRecycler = new FruitAdapterRecycler(fruitList);
         recyclerView.setAdapter(fruitAdapterRecycler);
